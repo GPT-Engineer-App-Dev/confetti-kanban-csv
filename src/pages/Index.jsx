@@ -1,22 +1,18 @@
-import { useState } from "react";
-import { Container, Button, VStack } from "@chakra-ui/react";
-import Confetti from "react-confetti";
+import { Container, Text, VStack, Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
-  const [showConfetti, setShowConfetti] = useState(false);
-
-  const handleButtonClick = () => {
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 3000); // Confetti lasts for 3 seconds
-  };
+  const navigate = useNavigate();
 
   return (
     <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
       <VStack spacing={4}>
-        <Button colorScheme="teal" size="lg" onClick={handleButtonClick}>
-          Celebrate!
+        <Text fontSize="2xl">Your Blank Canvas</Text>
+        <Text>Chat with the agent to start making edits.</Text>
+        <Button colorScheme="teal" size="lg" onClick={() => navigate('/confetti')}>
+          Go to Confetti Page
         </Button>
-        {showConfetti && <Confetti />}
+        
       </VStack>
     </Container>
   );

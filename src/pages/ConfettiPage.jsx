@@ -1,16 +1,13 @@
 import React from "react";
 import { Box, Button, Container, VStack } from "@chakra-ui/react";
-import confetti from "canvas-confetti";
+import Confetti from "react-confetti";
 
 const ConfettiPage = () => {
-  
+  const [showConfetti, setShowConfetti] = React.useState(false);
 
   const handleConfetti = () => {
-    confetti({
-      particleCount: 100,
-      spread: 70,
-      origin: { y: 0.6 },
-    });
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 3000); // Confetti lasts for 3 seconds
   };
 
   return (
@@ -19,7 +16,7 @@ const ConfettiPage = () => {
         <Button colorScheme="teal" size="lg" onClick={handleConfetti}>
           Celebrate!
         </Button>
-        
+        {showConfetti && <Confetti />}
       </VStack>
     </Container>
   );
